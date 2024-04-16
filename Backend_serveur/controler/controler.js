@@ -8,6 +8,7 @@ const { json } = require('body-parser');
 //const utilisateur = require('../models/utilisateur');
 
 
+
 // exports.Enregistrement = (req, res, next)=>{
 //     bcryp.hash(req.body.passWord,10)
 //     .then((hash)=>{
