@@ -2,7 +2,6 @@ const multer = require('multer');
 
 
 //gestion des images 
-
 const MINE_TYPES={
     //les images accepter (les extension)
     'image/jpg':'jpg',
