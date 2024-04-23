@@ -1,52 +1,54 @@
 mongoose = require('mongoose');
 
 const modelsauce = mongoose.Schema({
+    //userid est la etrange de l'autre table
     userId:{
         type:String,
-        require:true
+        required:true, 
+        index:true
     },
     name:{
         type:String,
-        require:true
+        required:true
     },
     manufacturer:{
         type:String,
-        require:true
+        required:true
     },
     description:{
         type:String,
-        require:true
+        required:true
     },
     mainPepper:{
         type:String,
-        require:true
+        required:true
     },
     imageUrl:{
         type:String,
-        require:true
+        default:"None"
     },
     heat:{
         type:Number,
-        require:true
+        required:true
     },
     likes:{
         type:Number,
-        require:false,
+        required:false,
         default:0
     },
     dislikes:{
         type:Number,
-        require:false,
+        required:false,
         default:0
     },
     usersLiked:{
         type:[String],
-        require:false,
+        required:false,
        
     },
     usersDisliked :{
         type:[String],
-        require:false,
+        required:false,
     }
 });
 

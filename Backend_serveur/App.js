@@ -10,7 +10,7 @@ const path = require('path');
 
 
 
- mongoose.connect('mongodb+srv://badama:hassane1998COM@expressapi.lzw8bql.mongodb.net/?retryWrites=true&w=majority&appName=ExpressApi',
+ mongoose.connect('mongodb+srv://badama:hassane1998COM@expressapi.lzw8bql.mongodb.net/deuxieme_teste?retryWrites=true&w=majority&appName=ExpressApi',
 // {userNewUrlParser:true,useUnifiedTopology:true
 
 // }
