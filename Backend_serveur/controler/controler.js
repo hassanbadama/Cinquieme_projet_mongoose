@@ -1,5 +1,4 @@
-//const Model = require('../models/modelUser');
-//const User = require("../models/user")
+
 const Utilisateur = require('../models/utilisateur');
 const Modelsauce = require('../models/modelSauce')
 const bcryp = require("bcrypt");
@@ -11,8 +10,6 @@ const modelSauce = require('../models/modelSauce');
 
 
 exports.EnregistrerUtilisateur = (req, res, next) => {
-  console.log(req.body.email);
-  console.log(req.body.password);
   // -- Hash du MDP avant l'envoi à la DB -- //
   bcryp
     .hash(req.body.password, 10)
@@ -29,7 +26,6 @@ exports.EnregistrerUtilisateur = (req, res, next) => {
         .save()
         .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
         .catch((error) => res.status(400).json({ error }));
-      console.log(req.body);
     })
 
     .catch((error) => res.status(500).json({ error }));
@@ -37,9 +33,6 @@ exports.EnregistrerUtilisateur = (req, res, next) => {
 
 //connexion projet
 exports.Connexion = (req, res, next) => {
-  console.log("teste de connexion");
-  console.log("tester mot de passe");
-  console.log(req.body.password);
   Utilisateur.findOne({ email: req.body.email })
     .then((model) => {
       console.log("il ya user");
@@ -50,9 +43,6 @@ exports.Connexion = (req, res, next) => {
       bcryp.compare(req.body.password, model.password)
         .then(valid => {
           if (!valid) {
-            console.log("il ya pas user");
-            console.log(valid);
-            console.log(model);
             return res.status(400).json({ message: "non authentifier" })
           }
           else {
@@ -76,8 +66,6 @@ exports.Connexion = (req, res, next) => {
 //ajouter sauces
 exports.ajouteSauce = (req, res, next) => {
   //recuperer toutes les donnee dans le formulaire
-  console.log("teste ajouter sauces");
-  console.log(req);
   const sauces = JSON.parse(req.body.sauce)
   const donnee = new Modelsauce({
     ...sauces,
