@@ -8,7 +8,7 @@ const fichierImageModifier = require('fs');
 const modelSauce = require('../models/modelSauce');
 //const utilisateur = require('../models/utilisateur');
 
-
+//ajouter user
 exports.EnregistrerUtilisateur = (req, res, next) => {
   // -- Hash du MDP avant l'envoi à la DB -- //
   bcryp
@@ -40,12 +40,14 @@ exports.Connexion = (req, res, next) => {
       if (!model) {
         return res.status(401).json({ message: "inconnu" })
       }
+      //compare le mot de passe
       bcryp.compare(req.body.password, model.password)
         .then(valid => {
           if (!valid) {
             return res.status(400).json({ message: "non authentifier" })
           }
           else {
+            //generer un token pour la securité
             console.log("c'est bnnnnn");
             res.status(201).json({
               userId: model._id,
@@ -55,8 +57,6 @@ exports.Connexion = (req, res, next) => {
                 { expiresIn: "24h" }
               )
             });
-            console.log("tokennnnn");
-            console.log(res.token);
           }
         }).catch(error => res.status(403).json({ error }));
     }).catch(error => res.status(500).json({ error }));

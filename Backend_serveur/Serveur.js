@@ -1,5 +1,6 @@
 const http = require("http");
 const app = require("./App");
+
 const nomaPort = val=>{
     const port = parseInt(val,10);
     if (isNaN(port)) {
